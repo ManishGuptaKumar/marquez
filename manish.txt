@@ -1,0 +1,4 @@
+java -cp h2.jar org.h2.tools.Server -tcp -tcpAllowOthers -ifNotExists
+
+Start both TCP and Web Console together
+java -cp h2.jar org.h2.tools.Server -tcp -web -browser -ifNotExists
