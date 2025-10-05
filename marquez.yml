@@ -1,0 +1,31 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: ${MARQUEZ_PORT:-5000}
+      httpCompliance: RFC7230_LEGACY
+  adminConnectors:
+    - type: http
+      port: ${MARQUEZ_ADMIN_PORT:-5001}
+
+db:
+  driverClass: org.h2.Driver
+  url: jdbc:h2:tcp://localhost/~/marquez;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+  user: sa
+  password: ""
+
+# 👇 Ensures DB migrations (tables) are auto-created
+migrateOnStartup: true
+
+graphql:
+  enabled: true
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+
+tags:
+  - name: PII
+    description: Personally identifiable information
+  - name: SENSITIVE
+    description: Contains sensitive information
